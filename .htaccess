@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+
+    # Serve static files directly
+    RewriteRule ^(css|js|img|fonts|favicon.ico)(.*)$ /dist/$1$2 [L]
+
+    # Handle history mode for Vue Router
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
